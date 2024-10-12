@@ -1,0 +1,21 @@
+// Retrieve and display data from local storage
+function displayStoredData() {
+    const storedData = JSON.parse(localStorage.getItem('patientData'));
+
+    if (storedData) {
+        console.log("Patient Name: ", storedData.patientName);
+        console.log("Blood Type: ", storedData.donorBlood);
+        console.log("Gender: ", storedData.gender);
+        console.log("Date of birth: ", storedData.dateofbirth);
+        console.log("nic: ", storedData.nic);
+        console.log("Address: ", storedData.patientAddress);
+        console.log("Disease: ", storedData.disease);
+        console.log("Disease Duration: ", storedData.diseaseduration);
+        console.log("Reason for Disease: ", storedData.reasonfordisease);
+    } else {
+        console.log("No data found.");
+    }
+}
+
+// Call this function to display the stored data
+displayStoredData();

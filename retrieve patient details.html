@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Patient Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .data-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .data-section {
+            margin-bottom: 20px;
+        }
+        .data-section h2 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .data-group {
+            margin-bottom: 10px;
+        }
+        .data-group span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="data-container">
+        <h2>Retrieved Patient Information</h2>
+        <div id="patient-data"></div>
+    </div>
+
+    <script>
+        // Function to retrieve and display patient data from local storage
+        function retrieveData() {
+            // Get the stored patient data from local storage
+            const storedData = JSON.parse(localStorage.getItem('patientData'));
+
+            // Check if data exists in local storage
+            if (storedData) {
+                // Prepare HTML content to display the stored data
+                let dataHTML = `
+                    <div class="data-section">
+                        <div class="data-group"><span>Patient Name:</span> ${storedData.patientName}</div>
+                        <div class="data-group"><span>Blood Type:</span> ${storedData.patientBlood}</div>
+                        <div class="data-group"><span>Gender:</span> ${storedData.gender}</div>
+                        <div class="data-group"><span>Date of Birth:</span> ${storedData.dateofbirth}</div>
+                        <div class="data-group"><span>NIC:</span> ${storedData.nic}</div>
+                        <div class="data-group"><span>Address:</span> ${storedData.patientAddress}</div>
+                        <div class="data-group"><span>Disease:</span> ${storedData.disease}</div>
+                        <div class="data-group"><span>Disease Duration:</span> ${storedData.diseaseduration}</div>
+                        <div class="data-group"><span>Reason for Disease:</span> ${storedData.reasonfordisease}</div>
+                    </div>
+                `;
+
+                // Display the data in the HTML element
+                document.getElementById('patient-data').innerHTML = dataHTML;
+            } else {
+                // If no data found, display a message
+                document.getElementById('patient-data').innerHTML = "<p>No data found in local storage.</p>";
+            }
+        }
+
+        // Call the function to retrieve and display data
+        retrieveData();
+    </script>
+</body>
+</html>
